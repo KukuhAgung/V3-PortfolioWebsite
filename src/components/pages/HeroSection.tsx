@@ -10,18 +10,24 @@ export default function HeroSection() {
   const progress = setProgress((value) => setLoading(value));
 
   useEffect(() => {
-    progress.loaded().then(() => {
-    });
+    setTimeout(() => {
+      progress.loaded().then(() => {});
+    }, 2000);
 
     return () => {
-       progress.clear();
-    }
+      progress.clear();
+    };
   }, []);
 
   return (
     <>
       <div className="person-container">
-        <img className="landing-image" src="/src/assets/images/person.webp" alt="person" loading="lazy"/>
+        <img
+          className="landing-image"
+          src="/src/assets/images/person.webp"
+          alt="person"
+          loading="lazy"
+        />
       </div>
     </>
   );
