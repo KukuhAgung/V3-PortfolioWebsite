@@ -1,9 +1,9 @@
 import { type PropsWithChildren, useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import setSplitText from "../utils/splitText";
 import Cursor from "../atoms/Cursor";
 import SocialIcons from "../fragments/SocialIcon";
 import Landing from "./Landing";
+import About from "../pages/AboutSection";
 
 const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
@@ -12,7 +12,6 @@ const MainContainer = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     const resizeHandler = () => {
-      setSplitText();
       setIsDesktopView(window.innerWidth > 1024);
     };
     resizeHandler();
@@ -27,9 +26,9 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       <Cursor />
       <Navbar />
       <SocialIcons />
-      {isDesktopView && children}
       <div className="container-main">
-        <Landing>{!isDesktopView && children}</Landing>
+        <Landing>{children}</Landing>
+      <About/>
       </div>
     </div>
   );
