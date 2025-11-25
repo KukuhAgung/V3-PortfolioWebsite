@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import setSplitText from "../utils/splitText";
 import Cursor from "../atoms/Cursor";
 import SocialIcons from "../fragments/SocialIcon";
-import Landing from "../pages/Landing";
+import Landing from "./Landing";
 
 const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
@@ -27,6 +27,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       <Cursor />
       <Navbar />
       <SocialIcons />
+      {isDesktopView && children}
       <div className="container-main">
         <Landing>{!isDesktopView && children}</Landing>
       </div>

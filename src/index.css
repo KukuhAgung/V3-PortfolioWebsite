@@ -18,7 +18,7 @@
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
-  --accentColor: #c2a4ff;
+  --accentColor: #8eb2ff;
   --backgroundColor: #000000;
   --vh: 100vh;
   --vh: 100svh;
@@ -81,14 +81,18 @@ body {
   margin: auto;
   position: relative;
 }
+
 .split-line {
   overflow: hidden;
+  display: block;
 }
+
 .split-h2 {
   overflow: hidden;
-  display: flex;
-  white-space: nowrap;
-  flex-wrap: nowrap;
+  display: flex;       
+  white-space: nowrap;  
+  flex-wrap: nowrap;    
+  justify-content: flex-start;
 }
 
 .techstack {

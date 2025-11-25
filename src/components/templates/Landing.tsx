@@ -1,4 +1,5 @@
-import type { PropsWithChildren } from "react";
+/* eslint-disable prefer-const */
+import { type PropsWithChildren } from "react";
 import "../styles/Landing.css";
 import { data } from "../../data";
 
@@ -22,8 +23,10 @@ const Landing = ({ children }: PropsWithChildren) => {
           <div className="landing-info">
             <h3>Front End</h3>
             <h2 className="landing-info-h2">
-              <div className="landing-h2-1">Developer</div>
-              <div className="landing-h2-2">Enthusiast</div>
+              <div className="landing-h2-1">Website</div>
+            </h2>
+            <h2>
+              <div className="landing-h2-info">Developer</div>
             </h2>
           </div>
         </div>

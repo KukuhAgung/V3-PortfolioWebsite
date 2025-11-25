@@ -67,7 +67,7 @@ const Navbar = () => {
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
+        {/* <a href="/#" className="navbar-title" data-cursor="disable">
           Logo
         </a>
         <a
@@ -76,7 +76,7 @@ const Navbar = () => {
           data-cursor="disable"
         >
           example@mail.com
-        </a>
+        </a> */}
         <ul>
           <li>
             <a data-href="#about" href="#about">
