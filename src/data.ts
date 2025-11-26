@@ -16,7 +16,52 @@ export const data = {
     description:
       "Data Science student with Front End Development competencies and have interest about Data Science and Machine Learning",
   },
-  experiences: [],
+  experiences: [
+    {
+      position: "Frontend Developer",
+      company: "PT Rawlabs Teknologi Nusantara",
+      period: "Jun 2024 - Nov 2024",
+      location: "Hybird",
+      description:
+        "Developing modern, responsive frontend applications with focus on user experience and performance. Working with cutting-edge technologies to build scalable web solutions.",
+      responsibilities: [
+        "Building responsive and interactive user interfaces using React and Next.js",
+        "Implementing modern UI/UX designs with TailwindCSS and Framer Motion",
+        "Optimizing application performance and ensuring cross-browser compatibility",
+        "Collaborating with design and backend teams to deliver high-quality features",
+      ],
+      technologies: [
+        "React",
+        "Next.js",
+        "TailwindCSS",
+        "JavaScript",
+        "Framer Motion",
+        "TypeScript",
+      ],
+    },
+    {
+      position: "Mentor & Curriculum of Front End Development",
+      company: "GDGoC Telkom University Bandung",
+      period: "Nov 2025 - Present",
+      location: "Hybrid",
+      description:
+        "Leading the educational roadmap for the Front-End division by crafting an industry-aligned curriculum. Dedicated to bridging the gap between academic theory and professional software development through practical mentorship.",
+      responsibilities: [
+        "Designed a comprehensive Front-End learning path covering HTML/CSS fundamentals to advanced React.js ecosystem.",
+        "Facilitated hands-on workshops and mentoring sessions, guiding students to build scalable web applications.",
+        "Conducted code reviews and provided constructive feedback to ensure best practices in code quality and architecture.",
+        "Collaborated with the Core Team to organize technology events, study jams, and hackathons.",
+      ],
+      technologies: [
+        "Firebase",
+        "React",
+        "TypeScript",
+        "Javascript",
+        "CSS",
+        "HTML",
+      ],
+    },
+  ],
   projects: [],
   contact: {
     email: "kukuhagung.tp@gmail.com",
@@ -28,10 +73,8 @@ export const data = {
     develop: {
       title: "DEVELOP",
       description: "",
-      details:
-        "",
-      tools: [
-      ],
+      details: "",
+      tools: [],
     },
   },
 };
