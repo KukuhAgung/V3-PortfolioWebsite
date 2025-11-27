@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import { type PropsWithChildren } from "react";
+import { Fragment, type PropsWithChildren } from "react";
 import "../styles/Landing.css";
 import { data } from "../../data";
 
@@ -9,7 +9,7 @@ const Landing = ({ children }: PropsWithChildren) => {
   const lastName = nameParts.slice(1).join(" ") || "";
 
   return (
-    <>
+    <Fragment>
       <div className="landing-section" id="landingDiv">
         <div className="landing-container">
           <div className="landing-intro">
@@ -32,7 +32,7 @@ const Landing = ({ children }: PropsWithChildren) => {
         </div>
         {children}
       </div>
-    </>
+    </Fragment>
   );
 };
 

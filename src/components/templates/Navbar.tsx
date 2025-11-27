@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "../atoms/HoverLinks";
 import { gsap } from "gsap";
@@ -65,7 +65,7 @@ const Navbar = () => {
     };
   }, []);
   return (
-    <>
+    <Fragment>
       <div className="header">
         {/* <a href="/#" className="navbar-title" data-cursor="disable">
           Logo
@@ -99,7 +99,7 @@ const Navbar = () => {
       <div className="landing-circle1"></div>
       <div className="landing-circle2"></div>
       <div className="nav-fade"></div>
-    </>
+    </Fragment>
   );
 };
 

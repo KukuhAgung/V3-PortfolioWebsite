@@ -29,7 +29,7 @@ export default function HeroSection() {
       <div className="person-container">
         <img
           className="landing-image"
-          src="/src/assets/images/person.webp"
+          src="/images/person.webp"
           alt="person"
           loading="lazy"
         />
