@@ -19,7 +19,6 @@ const Cursor = () => {
         cursorPos.x += (mousePos.x - cursorPos.x) / delay;
         cursorPos.y += (mousePos.y - cursorPos.y) / delay;
         gsap.to(cursor, { x: cursorPos.x, y: cursorPos.y, duration: 0.1 });
-        // cursor.style.transform = `translate(${cursorPos.x}px, ${cursorPos.y}px)`;
       }
       requestAnimationFrame(loop);
     });
@@ -33,16 +32,22 @@ const Cursor = () => {
           cursor.classList.add("cursor-icons");
 
           gsap.to(cursor, { x: rect.left, y: rect.top, duration: 0.1 });
-          //   cursor.style.transform = `translate(${rect.left}px,${rect.top}px)`;
           cursor.style.setProperty("--cursorH", `${rect.height}px`);
           hover = true;
         }
         if (element.dataset.cursor === "disable") {
           cursor.classList.add("cursor-disable");
         }
+        if (element.dataset.cursor === "scale") {
+          cursor.classList.add("cursor-scale");
+        }
       });
       element.addEventListener("mouseout", () => {
-        cursor.classList.remove("cursor-disable", "cursor-icons");
+        cursor.classList.remove(
+          "cursor-disable",
+          "cursor-icons",
+          "cursor-scale"
+        );
         hover = false;
       });
     });

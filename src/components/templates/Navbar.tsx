@@ -11,7 +11,6 @@ export let lenis: Lenis | null = null;
 
 const Navbar = () => {
   useEffect(() => {
-    // Initialize Lenis smooth scroll
     lenis = new Lenis({
       duration: 1.7,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -23,17 +22,14 @@ const Navbar = () => {
       infinite: false,
     });
 
-    // Start paused
     lenis.stop();
 
-    // Handle smooth scroll animation frame
     function raf(time: number) {
       lenis?.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
 
-    // Handle navigation links
     let links = document.querySelectorAll(".header ul a");
     links.forEach((elem) => {
       let element = elem as HTMLAnchorElement;
@@ -55,7 +51,6 @@ const Navbar = () => {
       });
     });
 
-    // Handle resize
     window.addEventListener("resize", () => {
       lenis?.resize();
     });
@@ -67,16 +62,7 @@ const Navbar = () => {
   return (
     <Fragment>
       <div className="header">
-        {/* <a href="/#" className="navbar-title" data-cursor="disable">
-          Logo
-        </a>
-        <a
-          href="mailto:example@mail.com"
-          className="navbar-connect"
-          data-cursor="disable"
-        >
-          example@mail.com
-        </a> */}
+
         <ul>
           <li>
             <a data-href="#about" href="#about">

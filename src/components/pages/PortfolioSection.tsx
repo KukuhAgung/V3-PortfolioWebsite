@@ -1,73 +1,66 @@
-/* eslint-disable prefer-const */
+import { useRef, useLayoutEffect } from "react"; // Gunakan useLayoutEffect
 import "../styles/Portfolio.css";
 import PortfolioImage from "./component/PortfolioImage";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect } from "react";
 import { data } from "../../data";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Portfolio() {
-  useEffect(() => {
-    let translateX: number = 0;
+const Work = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const flexContainerRef = useRef<HTMLDivElement>(null);
 
-    function setTranslateX() {
-      const box = document.getElementsByClassName("portfolio-box");
-      if (box.length === 0) return;
-      const rectLeft = document
-        .querySelector(".portfolio-container")!
-        .getBoundingClientRect().left;
-      const rect = box[0].getBoundingClientRect();
-      const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
-      let padding: number =
-        parseInt(window.getComputedStyle(box[0]).padding) / 2;
-      translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
-    }
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const section = sectionRef.current;
+      const flexContainer = flexContainerRef.current;
 
-    setTranslateX();
+      if (!section || !flexContainer) return;
 
-    let timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".portfolio-section",
+      const getScrollAmount = () => {
+        return -(flexContainer.scrollWidth - window.innerWidth);
+      };
+
+      const tween = gsap.to(flexContainer, {
+        x: getScrollAmount,
+        ease: "none",
+      });
+
+      ScrollTrigger.create({
+        trigger: section,
         start: "top top",
-        end: `+=${translateX}`,
-        scrub: true,
+        end: () => `+=${Math.abs(getScrollAmount())}`,
         pin: true,
-        id: "portfolio",
-      },
-    });
+        animation: tween,
+        scrub: 1,
+        invalidateOnRefresh: true,
+      });
+    }, sectionRef);
 
-    timeline.to(".portfolio-flex", {
-      x: -translateX,
-      ease: "none",
-    });
-
-    return () => {
-      timeline.kill();
-      ScrollTrigger.getById("portfolio")?.kill();
-    };
+    return () => ctx.revert();
   }, []);
+
   return (
-    <div className="portfolio-section" id="portfolio">
+    <div ref={sectionRef} className="portfolio-section" id="work">
       <div className="portfolio-container section-container">
-        <h2>
+        <h2 data-cursor="scale">
           My <span>Work</span>
         </h2>
-        <div className="portfolio-flex">
+
+        <div ref={flexContainerRef} className="portfolio-flex">
           {data.projects.map((project, index) => (
             <div className="portfolio-box" key={project.id}>
               <div className="portfolio-info">
-                <div className="portfolio-title">
+                <div className="portfolio-title" data-cursor="scale">
                   <h3>0{index + 1}</h3>
-
                   <div>
                     <h4>{project.title}</h4>
                     <p>{project.category}</p>
                   </div>
                 </div>
-                <h4>Tools and features</h4>
-                <p>{project.technologies}</p>
+                <h4 data-cursor="scale">Tools and features</h4>
+                <p data-cursor="scale">{project.technologies}</p>
               </div>
               <PortfolioImage image={project.image} alt={project.title} />
             </div>
@@ -77,3 +70,5 @@ export default function Portfolio() {
     </div>
   );
 };
+
+export default Work;

@@ -65,23 +65,23 @@ export const data = {
   projects: [
     {
       id: 1,
-      title: "AI-Powered Code Review Assistant",
-      category: "Full Stack",
-      technologies: "Python, TensorFlow, React, FastAPI, PostgreSQL, Docker",
+      title: "BeOneApps PT Binayasa Karya Pratama",
+      category: "Front End",
+      technologies: "Vite, ReactJS, Tailwind, Material UI, Axios, Leaflet",
       image: "/images/project-1.webp",
     },
     {
       id: 2,
-      title: "Real-time Collaborative Whiteboard",
-      category: "Full Stack",
-      technologies: "TypeScript, WebRTC, Socket.io, Canvas API, Node.js, Redis",
+      title: "Sinno Web App",
+      category: "Front End",
+      technologies: "Vite, ReactJS, Tailwind, Material UI, Axios",
       image: "/images/project-2.webp",
     },
     {
       id: 3,
-      title: "Blockchain Voting System",
-      category: "Full Stack",
-      technologies: "Solidity, Web3.js, React, Ethereum, IPFS, MetaMask",
+      title: "Company Profile PT Rawlabs Teknologi Nusantara",
+      category: "Front End",
+      technologies: "NextJS, React, Tailwind, Framer Motion",
       image: "/images/project-3.webp",
     },
     {

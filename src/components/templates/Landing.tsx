@@ -1,4 +1,3 @@
-/* eslint-disable prefer-const */
 import { Fragment, type PropsWithChildren } from "react";
 import "../styles/Landing.css";
 import { data } from "../../data";
@@ -12,7 +11,7 @@ const Landing = ({ children }: PropsWithChildren) => {
     <Fragment>
       <div className="landing-section" id="landingDiv">
         <div className="landing-container">
-          <div className="landing-intro">
+          <div className="landing-intro" data-cursor="scale">
             <h2>Hello! I'm</h2>
             <h1>
               {firstName.toUpperCase()}
@@ -20,7 +19,7 @@ const Landing = ({ children }: PropsWithChildren) => {
               {lastName && <span>{lastName.toUpperCase()}</span>}
             </h1>
           </div>
-          <div className="landing-info">
+          <div className="landing-info" data-cursor="scale">
             <h3>Front End</h3>
             <h2 className="landing-info-h2">
               <div className="landing-h2-1">Website</div>
