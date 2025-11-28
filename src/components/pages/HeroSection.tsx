@@ -20,7 +20,7 @@ export default function HeroSection() {
 
     return () => {
       progress.clear();
-      timelineContext && timelineContext.revert()
+      timelineContext && timelineContext.revert();
     };
   }, []);
 
