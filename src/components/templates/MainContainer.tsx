@@ -7,6 +7,7 @@ import About from "../pages/AboutSection";
 import Experience from "../pages/ExperienceSection";
 import Portfolio from "../pages/PortfolioSection";
 import Skills from "../pages/SkillsSection";
+import Contact from "../pages/Contact";
 
 const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
@@ -35,6 +36,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
         <Experience/>
         <Portfolio />
         <Skills />
+        <Contact/>
       </div>
     </div>
   );
