@@ -1,6 +1,6 @@
-import { useRef, useLayoutEffect } from "react"; // Gunakan useLayoutEffect
+import { useRef, useLayoutEffect } from "react";
 import "../styles/Portfolio.css";
-import PortfolioImage from "./component/PortfolioImage";
+import PortfolioImage from "../fragments/PortfolioImage";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { data } from "../../data";
