@@ -1,4 +1,5 @@
 import { data } from "../../data";
+import { MaskText } from "../atoms/MaskText";
 import "../styles/About.css";
 
 const About = () => {
@@ -6,7 +7,7 @@ const About = () => {
     <div className="about-section" id="about">
       <div className="about-me" data-cursor="scale">
         <h3 className="title">{data.about.title}</h3>
-        <p className="para">{data.about.description}</p>
+        <MaskText/>
       </div>
     </div>
   );

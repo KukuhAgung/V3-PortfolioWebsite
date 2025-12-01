@@ -13,8 +13,12 @@ export const data = {
   },
   about: {
     title: "About Me",
-    description:
-      "Data Science student with Front End Development competencies and have interest about Data Science and Machine Learning",
+    description: [
+      "A Data Science undergraduate student with a strong foundation in Software Development",
+      "Experienced for 6 months as a Front-End",
+      "proficient in modern web technologies such as React.js, Next.js, and TypeScript",
+      "Currently passionate about deepening knowledge in data analysis, machine learning"
+    ],
   },
   experiences: [
     {
