@@ -8,18 +8,18 @@ import { setAllTimeline } from "./utils/GsapScroll";
 export default function HeroSection() {
   const { setLoading } = useLoading();
 
-  const progress = setProgress((value) => setLoading(value));
-
   useEffect(() => {
     const timelineContext = setAllTimeline();
+
+    const progressControl = setProgress((value) => setLoading(value));
+
     setTimeout(() => {
-      progress.loaded().then(() => {
+      progressControl.loaded().then(() => {
         setAllTimeline();
       });
     }, 2000);
-
+    
     return () => {
-      progress.clear();
       timelineContext && timelineContext.revert();
     };
   }, []);
