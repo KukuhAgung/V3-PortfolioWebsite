@@ -16,7 +16,6 @@ const Loading = ({ percent }: { percent: number }) => {
   const MarqueeComponent = (MarqueeModule as any).default
     ? (MarqueeModule as any).default
     : MarqueeModule;
-  
 
   if (percent >= 100) {
     setTimeout(() => {
@@ -29,7 +28,7 @@ const Loading = ({ percent }: { percent: number }) => {
 
   useEffect(() => {
     import("../utils/initialFX").then((module) => {
-      if (isLoaded) {
+      if (isLoaded && percent >= 100) {
         setClicked(true);
         setTimeout(() => {
           if (module.initialFX) {
@@ -101,7 +100,7 @@ export const setProgress = (setLoading: (value: number) => void) => {
         }
       }, 2000);
     }
-  }, 100);
+  }, 50);
 
   function clear() {
     clearInterval(interval);
@@ -126,4 +125,3 @@ export const setProgress = (setLoading: (value: number) => void) => {
 };
 
 export default Loading;
-

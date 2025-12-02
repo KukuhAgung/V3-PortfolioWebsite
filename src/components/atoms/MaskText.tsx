@@ -11,19 +11,24 @@ export function MaskText() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      const lines = gsap.utils.toArray(".lineMask p"); 
+
       gsap.fromTo(
-        ".lineMask p",
+        lines,
         {
-          y: "100%",
+          yPercent: 100,
+          opacity: 0, 
         },
         {
-          y: "0%",
-          duration: 0.75,
-          ease: "power3.out",
-          stagger: 0.075,
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power4.out",
+          stagger: 0.1,
+
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 75%",
+            start: "top 80%",
             end: "bottom top",
             toggleActions: "play none none reverse",
           },

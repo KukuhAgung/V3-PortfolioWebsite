@@ -3,57 +3,77 @@ import "../styles/Contact.css";
 import { data } from "../../data";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Contact(){
+export default function Contact() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const contactTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".contact-section",
-        start: "top 80%",
-        end: "bottom center",
-        toggleActions: "play none none none",
-      },
-    });
+    const ctx = gsap.context(() => {
+      const contactTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".contact-section",
+          start: "top 80%",
+          end: "bottom center",
+          toggleActions: "play none none none",
+        },
+      });
 
-    contactTimeline.fromTo(
-      ".contact-section h3",
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-      }
-    );
+      contactTimeline
+        .fromTo(
+          ".contact-section h3",
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
+        )
+        .fromTo(
+          ".contact-box",
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: "power3.out",
+          },
+          "-=0.4"
+        );
+    }, containerRef);
 
-    contactTimeline.fromTo(
-      ".contact-box",
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.15,
-        ease: "power3.out",
-      },
-      "-=0.4"
-    );
-    return () => {
-      contactTimeline.kill();
-    };
+    return () => ctx.revert();
   }, []);
 
+  const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const arrow = e.currentTarget.querySelector(".arrow-icon");
+    if (arrow) {
+      gsap.to(arrow, {
+        x: 3,
+        y: -3,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const arrow = e.currentTarget.querySelector(".arrow-icon");
+    if (arrow) {
+      gsap.to(arrow, {
+        x: 0,
+        y: 0,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
+  };
+
   return (
-    <div className="contact-section section-container" id="contact">
+    <div
+      ref={containerRef}
+      className="contact-section section-container"
+      id="contact"
+    >
       <div className="contact-container">
         <h3>{data.developer.fullName}</h3>
         <div className="contact-flex">
@@ -69,39 +89,60 @@ export default function Contact(){
               <span>{data.social.location}</span>
             </p>
           </div>
+
           <div className="contact-box">
             <h4>Social</h4>
+
             <a
               href={data.contact.github}
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="disable"
               className="contact-social"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
-              Github <MdArrowOutward />
+              Github
+              <span className="arrow-icon">
+                <MdArrowOutward />
+              </span>
             </a>
+
             <a
               href={data.contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="disable"
               className="contact-social"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
-              Linkedin <MdArrowOutward />
+              Linkedin
+              <span className="arrow-icon">
+                <MdArrowOutward />
+              </span>
             </a>
+
             <a
               href={data.contact.instagram}
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="disable"
               className="contact-social"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
-              Instagram <MdArrowOutward />
+              Instagram
+              <span className="arrow-icon">
+                <MdArrowOutward />
+              </span>
             </a>
           </div>
+
           <div className="contact-box">
             <h2>
-              Designed and Developed <br /> by <span>{data.developer.fullName}</span>
+              Designed and Developed <br /> by{" "}
+              <span>{data.developer.fullName}</span>
             </h2>
             <h5>
               <MdCopyright /> {new Date().getFullYear()}
@@ -111,4 +152,4 @@ export default function Contact(){
       </div>
     </div>
   );
-};
+}
